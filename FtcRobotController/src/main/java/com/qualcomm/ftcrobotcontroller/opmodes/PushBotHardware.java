@@ -22,6 +22,7 @@ import com.qualcomm.robotcore.util.Range;
  * @author SSI Robotics
  * @version 2015-08-13-20-04
  */
+
 public class PushBotHardware extends OpMode
 
 {
@@ -29,16 +30,18 @@ public class PushBotHardware extends OpMode
     //
     // PushBotHardware
     //
+
     /**
      * Construct the class.
-     *
+     * <p/>
      * The system calls this member when the class is instantiated.
      */
-    public PushBotHardware ()
+    public PushBotHardware()
 
     {
         //
-        // Initialize base classes.
+        // public
+        // ialize base classes.
         //
         // All via self-construction.
 
@@ -53,12 +56,14 @@ public class PushBotHardware extends OpMode
     //
     // init
     //
+
     /**
      * Perform any actions that are necessary when the OpMode is enabled.
-     *
+     * <p/>
      * The system calls this member once when the OpMode is enabled.
      */
-    @Override public void init ()
+    @Override
+    public void init()
 
     {
         //
@@ -88,41 +93,32 @@ public class PushBotHardware extends OpMode
             v_motor_left_drive = null;
         }
 
-        try
-        {
-            v_motor_left_drive2 = hardwareMap.dcMotor.get ("left_drive2");
-            v_motor_left_drive2.setDirection (DcMotor.Direction.REVERSE);
-        }
-        catch (Exception p_exeception)
-        {
-            m_warning_message ("left_drive2");
-            DbgLog.msg (p_exeception.getLocalizedMessage ());
+        try {
+            v_motor_left_drive2 = hardwareMap.dcMotor.get("left_drive2");
+            v_motor_left_drive2.setDirection(DcMotor.Direction.REVERSE);
+        } catch (Exception p_exeception) {
+            m_warning_message("left_drive2");
+            DbgLog.msg(p_exeception.getLocalizedMessage());
 
             v_motor_left_drive2 = null;
         }
 
-        try
-        {
-            v_motor_right_drive = hardwareMap.dcMotor.get ("right_drive");
-            v_motor_right_drive.setDirection (DcMotor.Direction.REVERSE);
-        }
-        catch (Exception p_exeception)
-        {
-            m_warning_message ("right_drive");
-            DbgLog.msg (p_exeception.getLocalizedMessage ());
+        try {
+            v_motor_right_drive = hardwareMap.dcMotor.get("right_drive");
+            v_motor_right_drive.setDirection(DcMotor.Direction.REVERSE);
+        } catch (Exception p_exeception) {
+            m_warning_message("right_drive");
+            DbgLog.msg(p_exeception.getLocalizedMessage());
 
             v_motor_right_drive = null;
         }
 
-        try
-        {
-            v_motor_right_drive2 = hardwareMap.dcMotor.get ("right_drive2");
-            v_motor_right_drive2.setDirection (DcMotor.Direction.REVERSE);
-        }
-        catch (Exception p_exeception)
-        {
-            m_warning_message ("right_drive2");
-            DbgLog.msg (p_exeception.getLocalizedMessage ());
+        try {
+            v_motor_right_drive2 = hardwareMap.dcMotor.get("right_drive2");
+            v_motor_right_drive2.setDirection(DcMotor.Direction.REVERSE);
+        } catch (Exception p_exeception) {
+            m_warning_message("right_drive2");
+            DbgLog.msg(p_exeception.getLocalizedMessage());
 
             v_motor_right_drive2 = null;
         }
@@ -130,14 +126,11 @@ public class PushBotHardware extends OpMode
         //
         // Connect the arm motor.
         //
-        try
-        {
-            v_motor_left_arm = hardwareMap.dcMotor.get ("left_arm");
-        }
-        catch (Exception p_exeception)
-        {
-            m_warning_message ("left_arm");
-            DbgLog.msg (p_exeception.getLocalizedMessage ());
+        try {
+            v_motor_left_arm = hardwareMap.dcMotor.get("left_arm");
+        } catch (Exception p_exeception) {
+            m_warning_message("left_arm");
+            DbgLog.msg(p_exeception.getLocalizedMessage());
 
             v_motor_left_arm = null;
         }
@@ -150,28 +143,22 @@ public class PushBotHardware extends OpMode
         //
         double l_hand_position = 0.5;
 
-        try
-        {
-            v_servo_left_hand = hardwareMap.servo.get ("left_hand");
-            v_servo_left_hand.setPosition (l_hand_position);
-        }
-        catch (Exception p_exeception)
-        {
-            m_warning_message ("left_hand");
-            DbgLog.msg (p_exeception.getLocalizedMessage ());
+        try {
+            v_servo_left_hand = hardwareMap.servo.get("left_hand");
+            v_servo_left_hand.setPosition(l_hand_position);
+        } catch (Exception p_exeception) {
+            m_warning_message("left_hand");
+            DbgLog.msg(p_exeception.getLocalizedMessage());
 
             v_servo_left_hand = null;
         }
 
-        try
-        {
-            v_servo_right_hand = hardwareMap.servo.get ("right_hand");
-            v_servo_right_hand.setPosition (l_hand_position);
-        }
-        catch (Exception p_exeception)
-        {
-            m_warning_message ("right_hand");
-            DbgLog.msg (p_exeception.getLocalizedMessage ());
+        try {
+            v_servo_right_hand = hardwareMap.servo.get("right_hand");
+            v_servo_right_hand.setPosition(l_hand_position);
+        } catch (Exception p_exeception) {
+            m_warning_message("right_hand");
+            DbgLog.msg(p_exeception.getLocalizedMessage());
 
             v_servo_right_hand = null;
         }
@@ -182,10 +169,11 @@ public class PushBotHardware extends OpMode
     //
     // a_warning_generated
     //
+
     /**
      * Access whether a warning has been generated.
      */
-    boolean a_warning_generated ()
+    boolean a_warning_generated()
 
     {
         return v_warning_generated;
@@ -196,10 +184,11 @@ public class PushBotHardware extends OpMode
     //
     // a_warning_message
     //
+
     /**
      * Access the warning message.
      */
-    String a_warning_message ()
+    String a_warning_message()
 
     {
         return v_warning_message;
@@ -210,18 +199,18 @@ public class PushBotHardware extends OpMode
     //
     // m_warning_message
     //
+
     /**
      * Mutate the warning message by ADDING the specified message to the current
      * message; set the warning indicator to true.
-     *
+     * <p/>
      * A comma will be added before the specified message if the message isn't
      * empty.
      */
-    void m_warning_message (String p_exception_message)
+    void m_warning_message(String p_exception_message)
 
     {
-        if (v_warning_generated)
-        {
+        if (v_warning_generated) {
             v_warning_message += ", ";
         }
         v_warning_generated = true;
@@ -233,12 +222,14 @@ public class PushBotHardware extends OpMode
     //
     // start
     //
+
     /**
      * Perform any actions that are necessary when the OpMode is enabled.
-     *
+     * <p/>
      * The system calls this member once when the OpMode is enabled.
      */
-    @Override public void start ()
+    @Override
+    public void start()
 
     {
         //
@@ -254,12 +245,14 @@ public class PushBotHardware extends OpMode
     //
     // loop
     //
+
     /**
      * Perform any actions that are necessary while the OpMode is running.
-     *
+     * <p/>
      * The system calls this member repeatedly while the OpMode is running.
      */
-    @Override public void loop ()
+    @Override
+    public void loop()
 
     {
         //
@@ -275,13 +268,14 @@ public class PushBotHardware extends OpMode
     //
     // stop
     //
+
     /**
      * Perform any actions that are necessary when the OpMode is disabled.
-     *
+     * <p/>
      * The system calls this member once when the OpMode is disabled.
      */
-    @Override public void stop ()
-    {
+    @Override
+    public void stop() {
         //
         // Nothing needs to be done for this method.
         //
@@ -292,13 +286,13 @@ public class PushBotHardware extends OpMode
     //
     // scale_motor_power
     //
+
     /**
      * Scale the joystick input using a nonlinear algorithm.
      */
 
 
-    float scale_motor_power (float p_power)
-    {
+    float scale_motor_power(float p_power) {
         //
         // Assume no scaling.
         //
@@ -307,10 +301,10 @@ public class PushBotHardware extends OpMode
         //
         // Ensure the values are legal.
         //
-        float l_power = Range.clip (p_power, -1, 1);
+        float l_power = Range.clip(p_power, -1, 1);
 
         float[] l_array =
-                { 0.00f, 0.05f, 0.09f, 0.10f, 0.12f
+                {0.00f, 0.05f, 0.09f, 0.10f, 0.12f
                         , 0.15f, 0.18f, 0.24f, 0.30f, 0.36f
                         , 0.43f, 0.50f, 0.60f, 0.72f, 0.85f
                         , 1.00f, 1.00f
@@ -319,22 +313,16 @@ public class PushBotHardware extends OpMode
         //
         // Get the corresponding index for the specified argument/parameter.
         //
-        int l_index = (int)(l_power * 16.0);
-        if (l_index < 0)
-        {
+        int l_index = (int) (l_power * 16.0);
+        if (l_index < 0) {
             l_index = -l_index;
-        }
-        else if (l_index > 16)
-        {
+        } else if (l_index > 16) {
             l_index = 16;
         }
 
-        if (l_power < 0)
-        {
+        if (l_power < 0) {
             l_scale = -l_array[l_index];
-        }
-        else
-        {
+        } else {
             l_scale = l_array[l_index];
         }
 
@@ -346,29 +334,26 @@ public class PushBotHardware extends OpMode
     //
     // a_left_drive_power
     //
+
     /**
      * Access the left drive motor's power level.
      */
-    double a_left_drive_power ()
-    {
+    double a_left_drive_power() {
         double l_return = 0.0;
 
-        if (v_motor_left_drive2 != null)
-        {
-            l_return = v_motor_left_drive2.getPower ();
+        if (v_motor_left_drive2 != null) {
+            l_return = v_motor_left_drive2.getPower();
         }
 
         return l_return;
 
     } // a_left_drive_power
 
-    double a_left_drive_power2 ()
-    {
+    double a_left_drive_power2() {
         double l_return = 0.0;
 
-        if (v_motor_left_drive2 != null)
-        {
-            l_return = v_motor_left_drive2.getPower ();
+        if (v_motor_left_drive2 != null) {
+            l_return = v_motor_left_drive2.getPower();
         }
 
         return l_return;
@@ -379,29 +364,26 @@ public class PushBotHardware extends OpMode
     //
     // a_right_drive_power
     //
+
     /**
      * Access the right drive motor's power level.
      */
-    double a_right_drive_power ()
-    {
+    double a_right_drive_power() {
         double l_return = 0.0;
 
-        if (v_motor_right_drive != null)
-        {
-            l_return = v_motor_right_drive.getPower ();
+        if (v_motor_right_drive != null) {
+            l_return = v_motor_right_drive.getPower();
         }
 
         return l_return;
 
     } // a_right_drive_power
 
-    double a_right_drive_power2 ()
-    {
+    double a_right_drive_power2() {
         double l_return = 0.0;
 
-        if (v_motor_right_drive2 != null)
-        {
-            l_return = v_motor_right_drive2.getPower ();
+        if (v_motor_right_drive2 != null) {
+            l_return = v_motor_right_drive2.getPower();
         }
 
         return l_return;
@@ -411,23 +393,38 @@ public class PushBotHardware extends OpMode
     //
     // set_drive_power
     //
+
     /**
      * Scale the joystick input using a nonlinear algorithm.
      */
-    void set_drive_power_2 (double p_level)
 
+
+    int two;
+    int four;
+    int answer;
+    {
+    two = 2;
+    four = 4;
+    answer = 1;
+    }
+    void set_drive_power_2(double p_level)
     {
         if (gamepad1.a)
         {
-            v_motor_left_drive2.setPower (Math.round(p_level*2));
-            v_motor_left_drive2.setPower (Math.round(p_level*2));
-
+            v_motor_left_drive2.setPower (p_level*2);
+            v_motor_right_drive2.setPower (p_level*2);
+            answer = answer * 2;
         }
-
         else if (gamepad1.b)
         {
-            v_motor_left_drive2.setPower (Math.round(p_level/2));
-            v_motor_right_drive2.setPower (Math.round(p_level/2));
+            v_motor_left_drive2.setPower(p_level * 4);
+            v_motor_right_drive2.setPower(p_level * 4);
+            answer = answer * 4;
+        }
+        else if (gamepad1.left_bumper)
+        {
+            v_motor_left_drive2.setPower (Math.round(p_level/answer));
+            v_motor_right_drive2.setPower (Math.round(p_level/answer));
         }
     }
 
