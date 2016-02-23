@@ -318,37 +318,6 @@ public class PushBotHardware extends OpMode
      */
 
 
-    int two;
-    int four;
-    int answer;
-    {
-    two = 2;
-    four = 4;
-    // cant be here since answer needs to = plevel answer = 1;
-    }
-    void set_drive_power_2(double p_level)
-	answer = p_level
-    {
-        if (gamepad1.a)
-        {
-            v_motor_left_drive.setPower (p_level*2);
-            v_motor_right_drive.setPower (p_level*2);
-            answer = answer * 2;
-        }
-        else if (gamepad1.b)
-        {
-            v_motor_left_drive.setPower(p_level * 4);
-            v_motor_right_drive.setPower(p_level * 4);
-            answer = answer * 4;
-        }
-        else if (gamepad1.left_bumper)
-        {
-            v_motor_left_drive.setPower (Math.round(p_level/answer));
-            v_motor_right_drive.setPower (Math.round(p_level/answer));
-        }
-    }
-
-
     void set_drive_power (double p_left_power, double p_right_power)
 
     {
